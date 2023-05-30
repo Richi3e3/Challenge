@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="style.css">
+<head>
+  <title>Encriptador/Desencriptador</title>
+  <script>
+    function encriptar() {
+      var texto = document.getElementById("texto").value;
+      var encriptado = texto.replace(/e/g, "enter")
+                            .replace(/i/g, "imes")
+                            .replace(/a/g, "ai")
+                            .replace(/o/g, "ober")
+                            .replace(/u/g, "ufat");
+      document.getElementById("resultado").innerHTML = encriptado;
+    }
+    
+    function desencriptar() {
+      var texto = document.getElementById("texto").value;
+      var desencriptado = texto.replace(/enter/g, "e")
+                              .replace(/imes/g, "i")
+                              .replace(/ai/g, "a")
+                              .replace(/ober/g, "o")
+                              .replace(/ufat/g, "u");
+      document.getElementById("resultado").innerHTML = desencriptado;
+    }
+    
+    function copiar() {
+      var resultado = document.getElementById("resultado").innerHTML;
+      navigator.clipboard.writeText(resultado);
+      alert("Texto copiado al portapapeles");
+    }
+  </script>
+</head>
+<body>
+  <h1>Encriptador/Desencriptador</h1>
+  
+  <textarea id="texto" rows="5" cols="50"></textarea><br>
+  
+  <input type="radio" name="accion" value="encriptar" checked> Encriptar
+  <input type="radio" name="accion" value="desencriptar"> Desencriptar<br>
+  
+  <button onclick="if (document.querySelector('input[name=accion]:checked').value === 'encriptar') { encriptar(); } else { desencriptar(); }">Procesar</button>
+  <button onclick="copiar()">Copiar</button>
+  
+  <h2>Resultado:</h2>
+  <div id="resultado"></div>
+</body>
+</html>
